@@ -11,6 +11,9 @@ int registro()
     char cargo[40];
     char Arquivo[40];
 
+    printf("digite o seu cpf:\n");
+    scanf("%s", cpf);
+
     strcpy(Arquivo, cpf);
 
     FILE *file;
@@ -18,12 +21,6 @@ int registro()
     fprintf(file, cpf);
     fclose(file);
 
-    printf("digite o seu cpf:\n");
-    scanf("%s", cpf);
-
-    file = fopen(Arquivo, "a");
-    fprintf(file, cpf);
-    fclose(file);
     file = fopen(Arquivo, "a");
     fprintf(file, ",");
     fclose(file);
@@ -68,11 +65,11 @@ int consultar()
     char conteudo[200];
     char Arquivo[200];
 
-    FILE *file;
-    file = fopen(cpf, "r");
-
     printf("Digite o cpf:");
     scanf("%s", cpf);
+
+    FILE *file;
+    file = fopen(cpf, "r");
 
     if (file == NULL)
     {
@@ -81,7 +78,7 @@ int consultar()
     while (fgets(conteudo, 200, file) != NULL)
     {
         printf("\nEssas sao as informacoes do usuario:");
-        scanf("%s", conteudo);
+        printf("%s", conteudo);
         printf("\n\n");
     }
     system("pause");
@@ -118,9 +115,10 @@ int main()
         system("cls");
         printf("\t Cartorio \n");
         printf(" Escolha as opcoes abaixo:\n");
-        printf("\t1 - Registar nome:\n");
-        printf("\t2 - consultar nome:\n");
-        printf("\t3 - deletar nome:\n");
+        printf("\t 1- Registar nome:\n");
+        printf("\t 2- consultar nome:\n");
+        printf("\t 3- deletar nome:\n");
+        printf("\t 4- Sair do sistema!\n\n");
         printf("opcao:");
 
         scanf("%d", &escolha); // armazenado a escolha de opçao
@@ -138,6 +136,10 @@ int main()
 
         case 3:
             deletar();
+            break;
+        case 4:
+        printf("Obrigado por entrar no nosso site!");
+        return 0;
             break;
 
         default:
